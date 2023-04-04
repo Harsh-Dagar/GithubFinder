@@ -23,10 +23,13 @@ function submitUN(e) {
     fetchData(username);
 }
 async function fetchData(username) {
+    let errormsg=document.getElementById('user-not-found');
+    errormsg.classList.add('hideNotFindMsg');
     try {
         const res = await fetch(`https://api.github.com/users/${username}`);
         const userdata = await res.json();
         if (!res.ok) {
+            errormsg.classList.remove('hideNotFindMsg');
             return console.log("ERRRRRREERFRR");
         }
         return updateUserData(userdata);
