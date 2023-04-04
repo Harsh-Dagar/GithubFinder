@@ -44,8 +44,15 @@ async function fetchData(username) {
 function updateUserData(userData) {
 
     const pUserName = document.getElementById("p-username");
-    pUserName.firstElementChild.innerHTML = userData.name;
+    // pUserName.firstElementChild.innerHTML = userData.name;
     pUserName.lastElementChild.innerHTML = `@${userData.login}`;
+    if(!userData.name||userData.name.length<1){
+        pUserName.firstElementChild.innerHTML =userData.login;
+    }
+    else{
+         pUserName.firstElementChild.innerHTML = userData.name;
+
+    }
 
 
     const joinDate = document.getElementById('p-joindate');
